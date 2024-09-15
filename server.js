@@ -2,7 +2,8 @@ const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
 const cors = require("cors");
-const { mongo, default: mongoose } = require("mongoose");
+const { mongoose } = require("mongoose");
+const path = require("path");
 dotenv.config();
 if (process.env.NODE_ENV === "local") {
   app.use(
@@ -17,6 +18,15 @@ if (process.env.NODE_ENV === "local") {
       credentials: true,
     })
   );
+}
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "./frontend/dist")));
+  app.get("*", (req, res) => {
+    res.sendFile(
+      path.resolve(__dirname, "./", "frontend", "dist", "index.html")
+    );
+  });
 }
 
 //connect db
