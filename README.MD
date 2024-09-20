@@ -13,3 +13,12 @@ mongosh
 show dbs
 use easy_canva
 show collections
+
+
+### frontend
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+npm i react-router-dom react-icons react-multi-carousel
+npm i react-multi-carousel --force
+npm i tailwind-scrollbar-hide
+
