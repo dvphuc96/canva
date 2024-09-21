@@ -1,8 +1,12 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
+import { FaHome } from "react-icons/fa";
+import { FaFolderOpen } from "react-icons/fa";
+import { LuLayoutTemplate } from "react-icons/lu";
 
 export const Layout = () => {
   const [show, setShow] = useState(false);
+  const { pathname } = useLocation();
 
   return (
     <div className="bg-[#18191b] min-h-screen w-full ">
@@ -79,12 +83,52 @@ export const Layout = () => {
               </span>
               <span className="text-[#e0dddd] text-sm">Free</span>
             </div>
-
-            <ul className="px-4 flex flex-col gap-2">
-              <li>
-                <Link></Link>
-              </li>
-            </ul>
+          </div>
+          <ul className="px-4 flex flex-col gap-2">
+            <li>
+              <Link
+                to="/"
+                className={`text-[#e0dddd] px-2 py-2 flex justify-start items-center gap-2 ${
+                  pathname === "/" ? "bg-[#ffffff26]" : ""
+                } rounded-md `}
+              >
+                <span className="text-xl">
+                  <FaHome />
+                </span>
+                <span className="font-medium">Home</span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/projects"
+                className={`text-[#e0dddd] px-2 py-2 flex justify-start items-center gap-2 ${
+                  pathname === "/projects" ? "bg-[#ffffff26]" : ""
+                } rounded-md `}
+              >
+                <span className="text-xl">
+                  <FaFolderOpen />
+                </span>
+                <span className="font-medium">Projects</span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/templates"
+                className={`text-[#e0dddd] px-2 py-2 flex justify-start items-center gap-2 ${
+                  pathname === "/templates" ? "bg-[#ffffff26]" : ""
+                } rounded-md `}
+              >
+                <span className="text-xl">
+                  <LuLayoutTemplate />
+                </span>
+                <span className="font-medium">Templates</span>
+              </Link>
+            </li>
+          </ul>
+        </div>
+        <div className="ml-[300px] w-[calc(100%-300px)]">
+          <div className="py-4 pr-4">
+            <Outlet />
           </div>
         </div>
       </div>
