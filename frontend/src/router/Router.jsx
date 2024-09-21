@@ -1,11 +1,12 @@
 import { useRoutes } from "react-router-dom";
-import { Home } from "../pages/Home";
+import { Layout } from "../pages/Layout";
 
 export const Router = () => {
   const routing = useRoutes([
     {
       path: "/",
-      element: <Home />,
+      element: <Layout />,
+
     },
   ]);
   return routing;
