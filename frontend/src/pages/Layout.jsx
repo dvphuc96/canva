@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 export const Layout = () => {
   const [show, setShow] = useState(false);
+
   return (
     <div className="bg-[#18191b] min-h-screen w-full ">
       <div className="bg-[#212223] shadow-md fixed left-0 top-0 w-full z-20">
@@ -60,6 +61,30 @@ export const Layout = () => {
                 </ul>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="w-full flex mt-16">
+        <div className="sidebar w-[300px] p-5 h-[calc(100vh-70px)] fixed bg-[#34569f]">
+          <div className="px-2 py-2 flex justify-start gap-5 items-center mb-3">
+            <img
+              className="w-[40px] h-[40px] rounded-full"
+              src="https://templates-flatlogic.herokuapp.com/sing-app/html5/demo/img/people/a5.jpg"
+              alt="image"
+            />
+            <div className="flex justify-center flex-col items-start">
+              <span className="text-[#e0dddd] font-bold text-md">
+                Kazi Ariyan
+              </span>
+              <span className="text-[#e0dddd] text-sm">Free</span>
+            </div>
+
+            <ul className="px-4 flex flex-col gap-2">
+              <li>
+                <Link></Link>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
