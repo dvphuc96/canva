@@ -23,11 +23,11 @@ export const Router = () => {
           path: "/projects",
           element: <ProjectList />,
         },
-        {
-          path: "/design/create",
-          element: <CreateDesign />,
-        },
       ],
+    },
+    {
+      path: "/design/create",
+      element: <CreateDesign />,
     },
   ]);
   return routing;
