@@ -12,7 +12,7 @@ export const Header = ({ openModal, handleChangeType, isIndex }) => {
               alt="Logo"
             />
           </div>
-          {!isIndex && <span className='text-xl text-gray-500'>Easy Canva</span>}
+          {!isIndex && <span className='text-xl text-gray-400'>Easy Canva</span>}
           {isIndex ? (
             <div className="flex gap-4">
               <button
