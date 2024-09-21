@@ -100,7 +100,7 @@ export const Home = () => {
                 <Link className="w-full h-full block bg-slate-100 p-4 rounded-md">
                   <img
                     className="w-full h-full rounded-md overflow-hidden"
-                    src="../../public/canva.png"
+                    src="/canva.png"
                     alt=""
                   />
                 </Link>
