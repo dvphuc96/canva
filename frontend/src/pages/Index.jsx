@@ -5,7 +5,7 @@ import { RxCross2 } from "react-icons/rx";
 import { BiLogoGmail } from "react-icons/bi";
 import { FaFacebook } from "react-icons/fa";
 
-export const Home = () => {
+export const Index = () => {
   const { isOpen, openModal, closeModal } = useOpenModal();
   const [type, setType] = useState("");
   const [userData, setUserData] = useState({
