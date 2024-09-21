@@ -1,10 +1,11 @@
 import { useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaTrashAlt } from "react-icons/fa";
 
 export const Home = () => {
+  const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [state, setState] = useState({
     width: 0,
@@ -36,6 +37,16 @@ export const Home = () => {
       breakpoint: { max: 464, min: 0 },
       items: 1,
     },
+  };
+
+  const createNewDesign = () => {
+    navigate("/design/create", {
+      state: {
+        type: "create",
+        width: state.width,
+        height: state.height,
+      },
+    });
   };
 
   return (
@@ -74,7 +85,10 @@ export const Home = () => {
               />
             </div>
           </div>
-          <button className="px-4 py-2 text-[15px] overflow-hidden text-center bg-[#32769ead] text-white rounded-[3px] font-medium hover:bg-[#1e830f] w-full">
+          <button
+            className="px-4 py-2 text-[15px] overflow-hidden text-center bg-[#32769ead] text-white rounded-[3px] font-medium hover:bg-[#1e830f] w-full"
+            onClick={createNewDesign}
+          >
             Create New Design
           </button>
         </form>

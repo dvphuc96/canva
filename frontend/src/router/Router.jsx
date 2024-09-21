@@ -3,6 +3,7 @@ import { Layout } from "../pages/Layout";
 import { Home } from "../components/Home";
 import { TemplateList } from "../components/TemplateList";
 import { ProjectList } from "../components/ProjectList";
+import { CreateDesign } from "../components/CreateDesign";
 
 export const Router = () => {
   const routing = useRoutes([
@@ -21,6 +22,10 @@ export const Router = () => {
         {
           path: "/projects",
           element: <ProjectList />,
+        },
+        {
+          path: "/design/create",
+          element: <CreateDesign />,
         },
       ],
     },
