@@ -4,6 +4,7 @@ import { Home } from "../components/Home";
 import { TemplateList } from "../components/TemplateList";
 import { ProjectList } from "../components/ProjectList";
 import { CreateDesign } from "../components/CreateDesign";
+import { Main } from "../pages/Main";
 
 export const Router = () => {
   const routing = useRoutes([
@@ -28,6 +29,10 @@ export const Router = () => {
     {
       path: "/design/create",
       element: <CreateDesign />,
+    },
+    {
+      path: "/design/:id/edit",
+      element: <Main />,
     },
   ]);
   return routing;

@@ -24,7 +24,7 @@ export const Index = () => {
   };
   return (
     <div className="bg-[#18191b] min-h-screen w-full">
-      <Header openModal={openModal} handleChangeType={handleChangeType} />
+      <Header openModal={openModal} handleChangeType={handleChangeType} isIndex={true}/>
       <div
         className={`w-screen ${
           isOpen ? "visible opacity-100" : "invisible opacity-30"
