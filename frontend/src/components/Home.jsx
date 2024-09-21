@@ -1,4 +1,8 @@
 import { useState } from "react";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import { Link } from "react-router-dom";
+import { FaTrashAlt } from "react-icons/fa";
 
 export const Home = () => {
   const [show, setShow] = useState(false);
@@ -14,6 +18,26 @@ export const Home = () => {
       [name]: value,
     });
   };
+
+  const responsive = {
+    superLargeDesktop: {
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5,
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 4,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 3,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+    },
+  };
+
   return (
     <div className="pt-1 pl-3">
       <div className="w-full flex justify-center items-center h-[250px] bg-gradient-to-r from-[#4c76cf] to-[#552ab8] relative rounded-md overflow-hidden">
@@ -58,6 +82,34 @@ export const Home = () => {
           <h2 className="text-3xl pb-10 pt-6 font-semibold text-white">
             What Will You Design Today
           </h2>
+        </div>
+      </div>
+      <div>
+        <h2 className="text-xl py-6 font-semibold text-white">
+          Your Recent Designs{" "}
+        </h2>
+        <div>
+          <Carousel
+            autoPlay={true}
+            infinite={true}
+            responsive={responsive}
+            transitionDuration={500}
+          >
+            {[1, 2, 3, 4, 5, 6, 7, 8].map((d, i) => (
+              <div className="relative group w-full h-[170px] px-2" key={i}>
+                <Link className="w-full h-full block bg-slate-100 p-4 rounded-md">
+                  <img
+                    className="w-full h-full rounded-md overflow-hidden"
+                    src="../../public/canva.png"
+                    alt=""
+                  />
+                </Link>
+                <div className="absolute hidden cursor-pointer top-1 right-2 text-red-500 p-2 transition-all duration-500 group-hover:block">
+                  <FaTrashAlt />
+                </div>
+              </div>
+            ))}
+          </Carousel>
         </div>
       </div>
     </div>
