@@ -1,4 +1,5 @@
 import React from "react";
+import { Image } from "./Image";
 
 export const UploadImage = () => {
   return (
@@ -8,6 +9,9 @@ export const UploadImage = () => {
           Upload Image
         </label>
         <input type="file" id="uploadImage" className="hidden" />
+      </div>
+      <div className="h-[80vh] overflow-x-auto flex justify-start items-start scrollbar-hide">
+        <Image />
       </div>
     </div>
   );
