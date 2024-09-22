@@ -8,7 +8,7 @@ export const Header = ({ openModal, handleChangeType, isIndex }) => {
           <div className="w-[80px] h-[48px]">
             <img
               className="w-full h-full"
-              src="https://static.canva.com/web/images/12487a1e0770d29351bd4ce4f87ec8fe.svg"
+              src="/logo.svg"
               alt="Logo"
             />
           </div>
