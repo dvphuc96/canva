@@ -9,7 +9,7 @@ import { BsImages } from "react-icons/bs";
 import { RxTransparencyGrid } from "react-icons/rx";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { TemplateDesign } from "../components/main/TemplateDesign";
-
+import { UploadImage } from "../components/UploadImage";
 export const Main = () => {
   const [state, setState] = useState("");
   const [show, setShow] = useState({
@@ -41,7 +41,7 @@ export const Main = () => {
           </div>
           <div
             className={`${
-              show.name === "design" ? "bg-[#252627]" : ""
+              show.name === "shape" ? "bg-[#252627]" : ""
             } w-full h-[80px] cursor-pointer flex justify-center flex-col items-center gap-1 hover:text-gray-100`}
             onClick={() => setElements("shape", "shape")}
           >
@@ -52,9 +52,9 @@ export const Main = () => {
           </div>
           <div
             className={`${
-              show.name === "design" ? "bg-[#252627]" : ""
+              show.name === "uploadImage" ? "bg-[#252627]" : ""
             } w-full h-[80px] cursor-pointer flex justify-center flex-col items-center gap-1 hover:text-gray-100`}
-            onClick={() => setElements("image", "uploadImage")}
+            onClick={() => setElements("uploadImage", "uploadImage")}
           >
             <span className="text-2xl">
               <FaCloudUploadAlt />
@@ -63,7 +63,7 @@ export const Main = () => {
           </div>
           <div
             className={`${
-              show.name === "design" ? "bg-[#252627]" : ""
+              show.name === "text" ? "bg-[#252627]" : ""
             } w-full h-[80px] cursor-pointer flex justify-center flex-col items-center gap-1 hover:text-gray-100`}
             onClick={() => setElements("text", "text")}
           >
@@ -74,7 +74,7 @@ export const Main = () => {
           </div>
           <div
             className={`${
-              show.name === "design" ? "bg-[#252627]" : ""
+              show.name === "project" ? "bg-[#252627]" : ""
             } w-full h-[80px] cursor-pointer flex justify-center flex-col items-center gap-1 hover:text-gray-100`}
             onClick={() => setElements("project", "project")}
           >
@@ -85,7 +85,7 @@ export const Main = () => {
           </div>
           <div
             className={`${
-              show.name === "design" ? "bg-[#252627]" : ""
+              show.name === "initImage" ? "bg-[#252627]" : ""
             } w-full h-[80px] cursor-pointer flex justify-center flex-col items-center gap-1 hover:text-gray-100`}
             onClick={() => setElements("initImage", "images")}
           >
@@ -96,7 +96,7 @@ export const Main = () => {
           </div>
           <div
             className={`${
-              show.name === "design" ? "bg-[#252627]" : ""
+              show.name === "background" ? "bg-[#252627]" : ""
             } w-full h-[80px] cursor-pointer flex justify-center flex-col items-center gap-1 hover:text-gray-100`}
             onClick={() => setElements("background", "background")}
           >
@@ -124,11 +124,16 @@ export const Main = () => {
               </div>
             )}
             {state === "shape" && (
-              <div className="grid grid-cols-2 gap-2">shape</div>
+              <div className="grid grid-cols-2 gap-2">
+                <div className="h-[90px] bg-[#3c3c3d] cursor-pointer"></div>
+                <div className="h-[90px] bg-[#3c3c3d] cursor-pointer rounded-full"></div>
+                <div
+                  style={{ clipPath: "polygon(50% 0, 100% 100%, 0 100%" }}
+                  className="h-[90px] bg-[#3c3c3d] cursor-pointer  "
+                ></div>
+              </div>
             )}
-            {state === "image" && (
-              <div className="grid grid-cols-2 gap-2">image</div>
-            )}
+            {state === "uploadImage" && <UploadImage />}
             {state === "text" && (
               <div className="grid grid-cols-2 gap-2">text</div>
             )}
