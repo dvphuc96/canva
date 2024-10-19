@@ -10,6 +10,8 @@ import { RxTransparencyGrid } from "react-icons/rx";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { TemplateDesign } from "../components/main/TemplateDesign";
 import { UploadImage } from "../components/UploadImage";
+import { ProjectList } from "../components/ProjectList";
+import { Image } from "../components/Image";
 export const Main = () => {
   const [state, setState] = useState("");
   const [show, setShow] = useState({
@@ -29,9 +31,8 @@ export const Main = () => {
       <div className="flex h-[calc(100%-60px)] w-screen">
         <div className="w-[80px] bg-[#18191B] z-50 h-full text-gray-400 overflow-y-auto">
           <div
-            className={`${
-              show.name === "design" ? "bg-[#252627]" : ""
-            } w-full h-[80px] cursor-pointer flex justify-center flex-col items-center gap-1 hover:text-gray-100`}
+            className={`${show.name === "design" ? "bg-[#252627]" : ""
+              } w-full h-[80px] cursor-pointer flex justify-center flex-col items-center gap-1 hover:text-gray-100`}
             onClick={() => setElements("design", "design")}
           >
             <span className="text-2xl">
@@ -40,9 +41,8 @@ export const Main = () => {
             <span className="text-xs font-medium">Design</span>
           </div>
           <div
-            className={`${
-              show.name === "shape" ? "bg-[#252627]" : ""
-            } w-full h-[80px] cursor-pointer flex justify-center flex-col items-center gap-1 hover:text-gray-100`}
+            className={`${show.name === "shape" ? "bg-[#252627]" : ""
+              } w-full h-[80px] cursor-pointer flex justify-center flex-col items-center gap-1 hover:text-gray-100`}
             onClick={() => setElements("shape", "shape")}
           >
             <span className="text-2xl">
@@ -51,9 +51,8 @@ export const Main = () => {
             <span className="text-xs font-medium">Shapes</span>
           </div>
           <div
-            className={`${
-              show.name === "uploadImage" ? "bg-[#252627]" : ""
-            } w-full h-[80px] cursor-pointer flex justify-center flex-col items-center gap-1 hover:text-gray-100`}
+            className={`${show.name === "uploadImage" ? "bg-[#252627]" : ""
+              } w-full h-[80px] cursor-pointer flex justify-center flex-col items-center gap-1 hover:text-gray-100`}
             onClick={() => setElements("uploadImage", "uploadImage")}
           >
             <span className="text-2xl">
@@ -62,9 +61,8 @@ export const Main = () => {
             <span className="text-xs font-medium">Upload</span>
           </div>
           <div
-            className={`${
-              show.name === "text" ? "bg-[#252627]" : ""
-            } w-full h-[80px] cursor-pointer flex justify-center flex-col items-center gap-1 hover:text-gray-100`}
+            className={`${show.name === "text" ? "bg-[#252627]" : ""
+              } w-full h-[80px] cursor-pointer flex justify-center flex-col items-center gap-1 hover:text-gray-100`}
             onClick={() => setElements("text", "text")}
           >
             <span className="text-2xl">
@@ -73,9 +71,8 @@ export const Main = () => {
             <span className="text-xs font-medium">Text</span>
           </div>
           <div
-            className={`${
-              show.name === "project" ? "bg-[#252627]" : ""
-            } w-full h-[80px] cursor-pointer flex justify-center flex-col items-center gap-1 hover:text-gray-100`}
+            className={`${show.name === "project" ? "bg-[#252627]" : ""
+              } w-full h-[80px] cursor-pointer flex justify-center flex-col items-center gap-1 hover:text-gray-100`}
             onClick={() => setElements("project", "project")}
           >
             <span className="text-2xl">
@@ -84,9 +81,8 @@ export const Main = () => {
             <span className="text-xs font-medium">Project</span>
           </div>
           <div
-            className={`${
-              show.name === "initImage" ? "bg-[#252627]" : ""
-            } w-full h-[80px] cursor-pointer flex justify-center flex-col items-center gap-1 hover:text-gray-100`}
+            className={`${show.name === "initImage" ? "bg-[#252627]" : ""
+              } w-full h-[80px] cursor-pointer flex justify-center flex-col items-center gap-1 hover:text-gray-100`}
             onClick={() => setElements("initImage", "images")}
           >
             <span className="text-2xl">
@@ -95,9 +91,8 @@ export const Main = () => {
             <span className="text-xs font-medium">Images</span>
           </div>
           <div
-            className={`${
-              show.name === "background" ? "bg-[#252627]" : ""
-            } w-full h-[80px] cursor-pointer flex justify-center flex-col items-center gap-1 hover:text-gray-100`}
+            className={`${show.name === "background" ? "bg-[#252627]" : ""
+              } w-full h-[80px] cursor-pointer flex justify-center flex-col items-center gap-1 hover:text-gray-100`}
             onClick={() => setElements("background", "background")}
           >
             <span className="text-2xl">
@@ -108,9 +103,8 @@ export const Main = () => {
         </div>
         <div className="relative h-full w-[calc(100%-75px)] bg-black">
           <div
-            className={`${
-              show.status ? "p-0 -left-[350px]" : "absolute px-8 left-0 py-5"
-            } bg-[#252627] h-full fixed transition-all w-[350px] z-30 duration-700`}
+            className={`${show.status ? "p-0 -left-[350px]" : "absolute px-8 left-0 py-5"
+              } bg-[#252627] h-full fixed transition-all w-[350px] z-30 duration-700`}
           >
             <div
               onClick={() => setShow({ name: "", status: true })}
@@ -135,16 +129,32 @@ export const Main = () => {
             )}
             {state === "uploadImage" && <UploadImage />}
             {state === "text" && (
-              <div className="grid grid-cols-2 gap-2">text</div>
+              <div className="grid grid-cols-1 gap-2">
+                <div className="bg-[#3c3c3d] cursor-pointer font-bold p-3 text-white text-xl rounded-sm">
+                  <h2>Add A Text</h2>
+                </div>
+              </div>
             )}
-            {state === "project" && (
-              <div className="grid grid-cols-2 gap-2">project</div>
-            )}
+            {state === "project" && <ProjectList />}
             {state === "initImage" && (
-              <div className="grid grid-cols-2 gap-2">initImage</div>
+              <div className="h-[88vh] overflow-x-auto flex justify-start items-start scrollbar-hide">
+                <Image />
+              </div>
             )}
             {state === "background" && (
-              <div className="grid grid-cols-2 gap-2">background</div>
+              <div className="h-88vh] overflow-x-auto flex justify-start items-start scrollbar-hide w-full">
+                <div className="grid grid-cols-2 gap-2">
+                  {
+                    [1, 2, 3, 4, 5, 6].map((img, index) => {
+                      return (
+                        <div key={`background-${index}`} className='w-full h-[90px] overflow-hidden rounded-sm cursor-pointer'>
+                          <img className='w-full h-full object-fill' src="/canva.png" alt={`image-alt-${index}`} />
+                        </div>
+                      )
+                    })
+                  }
+                </div>
+              </div>
             )}
           </div>
         </div>
