@@ -12,12 +12,45 @@ import { TemplateDesign } from "../components/main/TemplateDesign";
 import { UploadImage } from "../components/UploadImage";
 import { ProjectList } from "../components/ProjectList";
 import { Image } from "../components/Image";
+import { set } from "mongoose";
+import { CreateComponent } from "../components/CreateComponent";
 export const Main = () => {
   const [state, setState] = useState("");
+  const [current_component, setCurrentComponent] = useState('');
   const [show, setShow] = useState({
     status: true,
     name: "",
   });
+  const [components, setComponents] = useState([
+    {
+      name: "main_frame",
+      type: "rect",
+      id: Math.floor(Math.random() * 100 + 1),
+      height: 500,
+      width: 650,
+      z_index: 1,
+      color: "#fff",
+      image: "",
+      setCurrentComponent: (component) => setCurrentComponent(component)
+    }
+  ]);
+
+  const moveElement = () => {
+    console.log("move element")
+  }
+
+  const resizeElement = () => {
+    console.log("resize element")
+  }
+
+  const rotateElement = () => {
+    console.log("rotate element")
+  }
+
+  const removeComponent = () => {
+    console.log("remove element")
+  }
+
   const setElements = (type, name) => {
     setState(type);
     setShow({
@@ -156,6 +189,27 @@ export const Main = () => {
                 </div>
               </div>
             )}
+          </div>
+          <div className="w-full h-full flex">
+            <div className={`flex justify-center relative items-center h-full 
+              ${!current_component ? 'w-full' : 'w-[calc(100%-250)] overflow-hidden'}`}>
+              <div className="m-w-[650px] m-h-[500px] flex justify-center items-center overflow-hidden">
+                <div id="main_design" className="w-auto relative h-auto overflow-hidden">
+                  {
+                    components.map((component, index) => {
+                      return (
+                        <CreateComponent
+                          key={`create-component-${index}`}
+                          info={component}
+                          current_component={current_component}
+                          removeComponent={removeComponent}
+                        />
+                      )
+                    })
+                  }
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
