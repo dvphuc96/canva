@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Header } from "../components/Header";
 import { LuLayoutTemplate } from "react-icons/lu";
 import { FaCloudUploadAlt } from "react-icons/fa";
@@ -17,6 +17,7 @@ export const Main = () => {
   const [state, setState] = useState("");
   const [current_component, setCurrentComponent] = useState('');
   const [color, setColor] = useState("");
+  const [image, setImage] = useState("");
   const [show, setShow] = useState({
     status: true,
     name: "",
@@ -34,6 +35,19 @@ export const Main = () => {
       setCurrentComponent: (component) => setCurrentComponent(component)
     }
   ]);
+
+  useEffect(() => {
+    if (current_component) {
+      const index = components.findIndex(component => component.id = current_component.id);
+      const temp = components.filter(component => component.id !== current_component.id);
+
+      if (current_component.name === 'main_frame' && image) {
+        components[index].image = image || current_component.image;
+      }
+      components[index].color = color || current_component.color;
+      setComponents([...temp, components[index]])
+    }
+  }, [color, image, components, current_component])
 
   const moveElement = () => {
     console.log("move element")
@@ -180,7 +194,11 @@ export const Main = () => {
                   {
                     [1, 2, 3, 4, 5, 6].map((img, index) => {
                       return (
-                        <div key={`background-${index}`} className='w-full h-[90px] overflow-hidden rounded-sm cursor-pointer'>
+                        <div
+                          key={`background-${index}`}
+                          className='w-full h-[90px] overflow-hidden rounded-sm cursor-pointer'
+                          onClick={() => setImage("/canva.png")}
+                        >
                           <img className='w-full h-full object-fill' src="/canva.png" alt={`image-alt-${index}`} />
                         </div>
                       )
@@ -234,7 +252,6 @@ export const Main = () => {
                 </div>
               )
             }
-
           </div>
         </div>
       </div>
