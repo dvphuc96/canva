@@ -12,11 +12,11 @@ import { TemplateDesign } from "../components/main/TemplateDesign";
 import { UploadImage } from "../components/UploadImage";
 import { ProjectList } from "../components/ProjectList";
 import { Image } from "../components/Image";
-import { set } from "mongoose";
 import { CreateComponent } from "../components/CreateComponent";
 export const Main = () => {
   const [state, setState] = useState("");
   const [current_component, setCurrentComponent] = useState('');
+  const [color, setColor] = useState("");
   const [show, setShow] = useState({
     status: true,
     name: "",
@@ -192,7 +192,7 @@ export const Main = () => {
           </div>
           <div className="w-full h-full flex">
             <div className={`flex justify-center relative items-center h-full 
-              ${!current_component ? 'w-full' : 'w-[calc(100%-250)] overflow-hidden'}`}>
+              ${!current_component ? 'w-full' : 'w-[calc(100%-250px)] overflow-hidden'}`}>
               <div className="m-w-[650px] m-h-[500px] flex justify-center items-center overflow-hidden">
                 <div id="main_design" className="w-auto relative h-auto overflow-hidden">
                   {
@@ -210,6 +210,31 @@ export const Main = () => {
                 </div>
               </div>
             </div>
+
+            {
+              current_component && (
+                <div className="h-full w-[250px] text-gray-300 bg-[#252627] px-3 py-2">
+                  <div className="flex gap-6 flex-col items-start h-full px-3 justify-start">
+                    <div className="flex gap-4 justify-start items-start mt-4">
+                      <span>Color : </span>
+                      <label
+                        className="w-[30px] h-[30px] cursor-pointer rounded-sm"
+                        htmlFor="color"
+                        style={{ background: `${current_component.color && current_component.color !== "#fff" ? current_component.color : "gray"}` }}
+                      >
+                      </label>
+                      <input
+                        type="color"
+                        id="color"
+                        className="invisible"
+                        onChange={(e) => setColor(e.target.value)}
+                      />
+                    </div>
+                  </div>
+                </div>
+              )
+            }
+
           </div>
         </div>
       </div>

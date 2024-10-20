@@ -1,6 +1,6 @@
 import React from "react";
 
-export const CreateComponent = ({ info, current_component }) => {
+export const CreateComponent = ({ info, current_component, removeComponent }) => {
   let html = "";
   if (info.name === "main_frame") {
     html = (
@@ -12,6 +12,7 @@ export const CreateComponent = ({ info, current_component }) => {
           background: info.color,
           zIndex: info.z_index,
         }}
+        onClick={() => info.setCurrentComponent(info)}
       >
         {info.image && (
           <img className="w-full h-full" src={info.image} alt="image" />
