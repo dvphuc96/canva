@@ -1,8 +1,9 @@
 import React from "react";
+import { MAIN_FRAME } from "../constants";
 
 export const CreateComponent = ({ info, current_component, removeComponent }) => {
   let html = "";
-  if (info.name === "main_frame") {
+  if (info.name === MAIN_FRAME) {
     html = (
       <div
         className="hover:border-[2px] hover:border-indigo-500 shadow-md"

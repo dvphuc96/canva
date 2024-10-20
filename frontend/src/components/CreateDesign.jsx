@@ -1,12 +1,13 @@
 import React, { useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { CreateComponent } from "./CreateComponent";
+import { MAIN_FRAME } from "../constants";
 
 export const CreateDesign = () => {
   const ref = useRef();
   const { state } = useLocation();
   const obj = {
-    name: "main_frame",
+    name: MAIN_FRAME,
     type: "rect",
     id: Math.floor(Math.random() * 100 + 1),
     height: state.height,

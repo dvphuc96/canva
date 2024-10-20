@@ -13,6 +13,7 @@ import { UploadImage } from "../components/UploadImage";
 import { ProjectList } from "../components/ProjectList";
 import { Image } from "../components/Image";
 import { CreateComponent } from "../components/CreateComponent";
+import { MAIN_FRAME } from "../constants";
 export const Main = () => {
   const [state, setState] = useState("");
   const [current_component, setCurrentComponent] = useState('');
@@ -24,7 +25,7 @@ export const Main = () => {
   });
   const [components, setComponents] = useState([
     {
-      name: "main_frame",
+      name: MAIN_FRAME,
       type: "rect",
       id: Math.floor(Math.random() * 100 + 1),
       height: 500,
@@ -41,13 +42,13 @@ export const Main = () => {
       const index = components.findIndex(component => component.id = current_component.id);
       const temp = components.filter(component => component.id !== current_component.id);
 
-      if (current_component.name === 'main_frame' && image) {
+      if (current_component.name === MAIN_FRAME && image) {
         components[index].image = image || current_component.image;
       }
       components[index].color = color || current_component.color;
       setComponents([...temp, components[index]])
     }
-  }, [color, image, components, current_component])
+  }, [color, image])
 
   const moveElement = () => {
     console.log("move element")
@@ -63,6 +64,16 @@ export const Main = () => {
 
   const removeComponent = () => {
     console.log("remove element")
+  }
+
+  const removeBackgroud = () => {
+    const componentFind = components.find(component => component.id === current_component.id);
+    if (componentFind) {
+      const temp = components.filter(component => component.id !== current_component.id);
+      componentFind.image = "";
+      setImage("");
+      setComponents([...temp, componentFind]);
+    }
   }
 
   const setElements = (type, name) => {
@@ -248,6 +259,12 @@ export const Main = () => {
                         onChange={(e) => setColor(e.target.value)}
                       />
                     </div>
+                    {
+                      (current_component.name === MAIN_FRAME && current_component.image) &&
+                      <div className="p-[6px] bg-slate-600 text-white cursor-pointer" onClick={removeBackgroud}>
+                        Remove Background
+                      </div>
+                    }
                   </div>
                 </div>
               )
