@@ -19,6 +19,7 @@ export const Main = () => {
   const [current_component, setCurrentComponent] = useState('');
   const [color, setColor] = useState("");
   const [image, setImage] = useState("");
+  const [rotate, setRotate] = useState(0);
   const [show, setShow] = useState({
     status: true,
     name: "",
@@ -74,6 +75,27 @@ export const Main = () => {
       setImage("");
       setComponents([...temp, componentFind]);
     }
+  }
+
+  const createShape = (name, type) => {
+    const style = {
+      id: Date.now(),
+      name,
+      type,
+      left: 10,
+      top: 10,
+      opacity: 1,
+      width: 200,
+      height: 150,
+      rotate: rotate,
+      z_index: 2,
+      color: "#3c3c3d",
+      setCurrentComponent: (component) => setCurrentComponent(component),
+      moveElement,
+      resizeElement,
+      rotateElement
+    };
+    setComponents([...components, style])
   }
 
   const setElements = (type, name) => {
@@ -177,11 +199,12 @@ export const Main = () => {
             )}
             {state === "shape" && (
               <div className="grid grid-cols-2 gap-2">
-                <div className="h-[90px] bg-[#3c3c3d] cursor-pointer"></div>
-                <div className="h-[90px] bg-[#3c3c3d] cursor-pointer rounded-full"></div>
+                <div className="h-[90px] bg-[#3c3c3d] cursor-pointer" onClick={() => createShape('shape', 'rect')}></div>
+                <div className="h-[90px] bg-[#3c3c3d] cursor-pointer rounded-full" onClick={() => createShape('shape', 'circle')}></div>
                 <div
                   style={{ clipPath: "polygon(50% 0, 100% 100%, 0 100%" }}
-                  className="h-[90px] bg-[#3c3c3d] cursor-pointer  "
+                  className="h-[90px] bg-[#3c3c3d] cursor-pointer"
+                  onClick={() => createShape('shape', 'trangle')}
                 ></div>
               </div>
             )}
@@ -261,7 +284,7 @@ export const Main = () => {
                     </div>
                     {
                       (current_component.name === MAIN_FRAME && current_component.image) &&
-                      <div className="p-[6px] bg-slate-600 text-white cursor-pointer" onClick={removeBackgroud}>
+                      <div className="p-[6px] bg-slate-600 text-white cursor-pointer rounded-md" onClick={removeBackgroud}>
                         Remove Background
                       </div>
                     }
