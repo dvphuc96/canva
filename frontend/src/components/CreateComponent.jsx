@@ -1,5 +1,6 @@
 import React from "react";
 import { MAIN_FRAME } from "../constants";
+import { FaTrashAlt } from "react-icons/fa";
 
 export const CreateComponent = ({ info, current_component, removeComponent }) => {
   console.log(info)
@@ -37,6 +38,13 @@ export const CreateComponent = ({ info, current_component, removeComponent }) =>
     }}
       className="absolute group hover:border-[2px] hover:border-indigo-500"
     >
+      {
+        current_component.id === info.id && <div onClick={() =>
+          removeComponent(info.id)} 
+          className="px-3 py-2 bg-white absolute hidden top-0 group-hover:block cursor-pointer rounded-md">
+            <FaTrashAlt/>
+        </div>
+      }
     </div>
   }
   return html;
