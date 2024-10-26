@@ -40,7 +40,7 @@ export const Main = () => {
 
   useEffect(() => {
     if (current_component) {
-      const index = components.findIndex(component => component.id = current_component.id);
+      const index = components.findIndex(component => component.id === current_component.id);
       const temp = components.filter(component => component.id !== current_component.id);
 
       if (current_component.name === MAIN_FRAME && image) {
@@ -87,10 +87,10 @@ export const Main = () => {
       opacity: 1,
       width: 200,
       height: 150,
-      rotate: rotate,
+      rotate,
       z_index: 2,
       color: "#3c3c3d",
-      setCurrentComponent: (component) => setCurrentComponent(component),
+      setCurrentComponent: (a) => setCurrentComponent(a),
       moveElement,
       resizeElement,
       rotateElement
